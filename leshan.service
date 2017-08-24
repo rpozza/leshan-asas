@@ -1,0 +1,14 @@
+[Unit]
+Description=LWM2M Leshan Server
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/screen -dmS leshan-service /home/ubuntu/leshan-asas/run.sh
+ExecStop=/usr/bin/screen -S leshan-service -X quit
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
